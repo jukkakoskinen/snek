@@ -9,7 +9,7 @@ A simple game of snake written in C using raylib.
 
 ## TODO
 
-- [ ] Frame-rate independence
+- [x] Frame-rate independence
 - [ ] Score display
 - [ ] Win/lose conditions
 - [ ] WASM build?

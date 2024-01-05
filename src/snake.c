@@ -47,13 +47,7 @@ bool snake_occupies(Snake *snake, int x, int y) {
     return false;
 }
 
-void snake_update(Snake *snake, Input *input) {
-    // Change direction
-    if (snake->next_direction != SNAKE_DIRECTION_NONE) {
-        snake->direction = snake->next_direction;
-        snake->next_direction = SNAKE_DIRECTION_NONE;
-    }
-
+void snake_update(Snake *snake, Input *input, float dt) {
     // Queue direction
     if (input->up && snake->direction != SNAKE_DIRECTION_DOWN) {
         snake->next_direction = SNAKE_DIRECTION_UP;
@@ -63,6 +57,19 @@ void snake_update(Snake *snake, Input *input) {
         snake->next_direction = SNAKE_DIRECTION_LEFT;
     } else if (input->right && snake->direction != SNAKE_DIRECTION_LEFT) {
         snake->next_direction = SNAKE_DIRECTION_RIGHT;
+    }
+
+    // Time to move?
+    snake->timer += dt;
+    if (snake->timer < 0.1f) {
+        return;
+    }
+    snake->timer = 0.0f;
+
+    // Change direction
+    if (snake->next_direction != SNAKE_DIRECTION_NONE) {
+        snake->direction = snake->next_direction;
+        snake->next_direction = SNAKE_DIRECTION_NONE;
     }
 
     // Move body

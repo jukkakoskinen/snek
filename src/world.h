@@ -10,4 +10,4 @@ typedef struct World {
 } World;
 
 void world_init(World *world);
-void world_update(World *world, Input *input);
+void world_update(World *world, Input *input, float dt);

@@ -24,8 +24,8 @@ void world_init(World *world) {
     }
 }
 
-void world_update(World *world, Input *input) {
-    snake_update(&world->snake, input);
+void world_update(World *world, Input *input, float dt) {
+    snake_update(&world->snake, input, dt);
 
     if (snake_hits(&world->snake, world->food.x, world->food.y)) {
         snake_grow(&world->snake);
@@ -33,6 +33,6 @@ void world_update(World *world, Input *input) {
     }
 
     if (snake_hits_self(&world->snake)) {
-        snake_init(&world->snake, 1, 1);
+        world_init(world);
     }
 }

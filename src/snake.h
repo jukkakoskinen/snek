@@ -20,6 +20,7 @@ typedef struct Snake {
     SnakeDirection next_direction;
     SnakePart parts[SNAKE_MAX_LENGTH];
     unsigned int length;
+    float timer;
 } Snake;
 
 void snake_init(Snake *snake, int x, int y);
@@ -27,4 +28,4 @@ void snake_grow(Snake *snake);
 bool snake_hits(Snake *snake, int x, int y);
 bool snake_hits_self(Snake *snake);
 bool snake_occupies(Snake *snake, int x, int y);
-void snake_update(Snake *snake, Input *input);
+void snake_update(Snake *snake, Input *input, float dt);

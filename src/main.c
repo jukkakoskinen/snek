@@ -9,7 +9,6 @@ int main() {
     World world;
 
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "snek");
-    SetTargetFPS(20);
 
     input_init(&input);
     world_init(&world);
@@ -19,8 +18,10 @@ int main() {
         ClearBackground(BLACK);
 
         input_capture(&input);
-        world_update(&world, &input);
+        world_update(&world, &input, GetFrameTime());
         render_world(&world);
+
+        DrawText(TextFormat("FPS: %i", GetFPS()), 10, 10, 20, GREEN);
 
         EndDrawing();
     }
