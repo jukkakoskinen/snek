@@ -10,7 +10,7 @@ void snake_init(Snake *snake, int x, int y) {
 }
 
 void snake_grow(Snake *snake) {
-    if (snake->length < WORLD_WIDTH * WORLD_HEIGHT) {
+    if (snake->length < SNAKE_MAX_LENGTH) {
         snake->parts[snake->length].x = snake->parts[snake->length - 1].x;
         snake->parts[snake->length].y = snake->parts[snake->length - 1].y;
         snake->length++;
